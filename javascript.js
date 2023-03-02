@@ -21,7 +21,6 @@ function divide(num1, num2) {
 }
 
 function isInt(n) {
-    console.log(n % 1 === 0);
     return n % 1 === 0;
 }
 
@@ -39,15 +38,6 @@ function operate(operator, num1, num2) {
             return undefined;
     }
 }
-
-const number = document.querySelectorAll('.number');
-number.forEach(num => {
-    num.addEventListener('click', (event) => {
-        displayNumber = Number(displayNumber + `${event.target.innerText}`);
-        return display.innerText = displayNumber;
-    })
-}
-);
 
 function addDot() {
     if (isInt(displayNumber)) {
@@ -150,8 +140,16 @@ function clear() {
     display.innerText = displayNumber;
 };
 
+const number = document.querySelectorAll('.number');
+number.forEach(num => {
+    num.addEventListener('click', (event) => {
+        displayNumber = Number(displayNumber + `${event.target.innerText}`);
+        return display.innerText = displayNumber;
+    })
+}
+);
+
 document.addEventListener('keydown', function (event) {
-    console.log(event)
     if (!isNaN(event.key)) {
         if (displayNumber <= 99999999) {
             displayNumber = Number(displayNumber + `${event.key}`);
