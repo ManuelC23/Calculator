@@ -143,14 +143,24 @@ function clear() {
 const number = document.querySelectorAll('.number');
 number.forEach(num => {
     num.addEventListener('click', (event) => {
-        displayNumber = Number(displayNumber + `${event.target.innerText}`);
-        return display.innerText = displayNumber;
+        if (displayNumber <= 99999999) {
+            displayNumber = Number(displayNumber + `${event.target.innerText}`);
+            return display.innerText = displayNumber;
+        }
     })
 }
 );
 
 document.addEventListener('keydown', function (event) {
     if (!isNaN(event.key)) {
+        if (event.key == 0) {
+            number[9].style.backgroundColor = 'rgb(206, 205, 205)';
+            setTimeout(() => number[9].style.backgroundColor = 'rgb(179, 179, 179)', 100)
+        } else {
+            number[(event.key - 1)].style.backgroundColor = 'rgb(206, 205, 205)';
+            setTimeout(() => number[(event.key - 1)].style.backgroundColor = 'rgb(179, 179, 179)', 100)
+        }
+
         if (displayNumber <= 99999999) {
             displayNumber = Number(displayNumber + `${event.key}`);
             return display.innerText = displayNumber;
